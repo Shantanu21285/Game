@@ -6,16 +6,17 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.ScreenUtils;
-public class MainMenu implements Screen {
+
+public class PauseGameScreen implements Screen {
 
     TanksStars game;
     private Texture backgroundImage;
     private TextureRegion backgroundTexture;
     OrthographicCamera camera;
 
-    public MainMenu(TanksStars game) {
+    public PauseGameScreen(TanksStars game) {
         this.game = game;
-        backgroundImage = new Texture(Gdx.files.internal("2.png"));
+        backgroundImage = new Texture(Gdx.files.internal("PauseGameScreen.png"));
         backgroundTexture = new TextureRegion(backgroundImage, 0, 0, 1880, 980);
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1880, 980);
@@ -37,45 +38,21 @@ public class MainMenu implements Screen {
         game.batch.draw(backgroundTexture, 0,0, 1880, 980);
         game.batch.end();
 
-        if (Gdx.input.getX()>1249 && Gdx.input.getX()<1840 && Gdx.input.getY()>325 && Gdx.input.getY()<473) {
-            if(Gdx.input.isTouched())
-            {
-                this.OpenNewGame();
-            }
-        }
-
-        if (Gdx.input.getX()>1249 && Gdx.input.getX()<1840 && Gdx.input.getY()>575 && Gdx.input.getY()<726) {
-            if(Gdx.input.isTouched())
-            {
-                this.OpenSavedGamesMenu();
-            }
-        }
-
         if (Gdx.input.getX()>1249 && Gdx.input.getX()<1840 && Gdx.input.getY()>836 && Gdx.input.getY()<974) {
             if(Gdx.input.isTouched())
             {
-                this.ExitApplication();
+
+                dispose();
             }
         }
+
+
     }
 
-    public void OpenNewGame()
-    {
+    public void OpenNewGame() {
         game.setScreen(new CustomisationMenu(this.game));
         dispose();
     }
-
-    public void OpenSavedGamesMenu()
-    {
-        game.setScreen(new LoadSavedGamesMenu(this.game));
-        dispose();
-    }
-
-    public void ExitApplication()
-    {
-        Gdx.app.exit();
-    }
-
     @Override
     public void resize(int width, int height) {
 
