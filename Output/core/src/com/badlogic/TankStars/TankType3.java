@@ -1,21 +1,17 @@
 package com.badlogic.TankStars;
 
-import com.badlogic.gdx.Screen;
-
-public class TankType1 extends Tank
-{
+public class TankType3 extends Tank {
     public String spawnTank()
     {
-        return "type1.gif";
+        return "type4.gif";
     }
-
     public String spawnTankinGame_1()
     {
-        return "Tank1.png";
+        return "Tank3.png";
     }
 
     public String spawnTankinGame_2()
     {
-        return "Tank1_Player2.png";
+        return "Tank3_Player2.png";
     }
 }

@@ -16,9 +16,9 @@ public class MainMenu implements Screen {
     public MainMenu(TanksStars game) {
         this.game = game;
         backgroundImage = new Texture(Gdx.files.internal("2.png"));
-        backgroundTexture = new TextureRegion(backgroundImage, 0, 0, 1880, 980);
+        backgroundTexture = new TextureRegion(backgroundImage, 0, 0, 1920, 1080);
         camera = new OrthographicCamera();
-        camera.setToOrtho(false, 1880, 980);
+        camera.setToOrtho(false, 1920, 1080);
     }
 
     @Override
@@ -34,7 +34,7 @@ public class MainMenu implements Screen {
         game.batch.setProjectionMatrix(camera.combined);
 
         game.batch.begin();
-        game.batch.draw(backgroundTexture, 0,0, 1880, 980);
+        game.batch.draw(backgroundTexture, 0,0, 1920, 1080);
         game.batch.end();
 
         if (Gdx.input.getX()>1249 && Gdx.input.getX()<1840 && Gdx.input.getY()>325 && Gdx.input.getY()<473) {
@@ -67,7 +67,7 @@ public class MainMenu implements Screen {
 
     public void OpenSavedGamesMenu()
     {
-        game.setScreen(new LoadSavedGamesMenu(this.game));
+        game.setScreen(new LoadSavedGamesScreen(this.game));
         dispose();
     }
 

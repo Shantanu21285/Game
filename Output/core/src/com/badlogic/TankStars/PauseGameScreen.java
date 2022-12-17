@@ -38,19 +38,40 @@ public class PauseGameScreen implements Screen {
         game.batch.draw(backgroundTexture, 0,0, 1880, 980);
         game.batch.end();
 
-        if (Gdx.input.getX()>1249 && Gdx.input.getX()<1840 && Gdx.input.getY()>836 && Gdx.input.getY()<974) {
+        if (Gdx.input.getX()>660 && Gdx.input.getX()<1259 && Gdx.input.getY()>291 && Gdx.input.getY()<437) {
             if(Gdx.input.isTouched())
             {
-
-                dispose();
+                this.openGameScreen();
             }
         }
 
+        if (Gdx.input.getX()>660 && Gdx.input.getX()<1259 && Gdx.input.getY()>541 && Gdx.input.getY()<695) {
+            if(Gdx.input.isTouched())
+            {
+                this.exitToMainMenu();
+            }
+        }
 
+        if (Gdx.input.getX()>660 && Gdx.input.getX()<1259 && Gdx.input.getY()>817 && Gdx.input.getY()<963) {
+            if(Gdx.input.isTouched())
+            {
+                this.exitToMainMenu();
+            }
+        }
     }
 
-    public void OpenNewGame() {
-        game.setScreen(new CustomisationMenu(this.game));
+    public void openGameScreen() {
+        Player p1=new Player();
+        Player p2=new Player();
+        p1.setTank(new TankType2());
+        p2.setTank(new TankType1());
+        game.setScreen(new GameScreen(this.game,p1,p2));
+        dispose();
+    }
+
+    public void exitToMainMenu()
+    {
+        game.setScreen(new MainMenu(this.game));
         dispose();
     }
     @Override
